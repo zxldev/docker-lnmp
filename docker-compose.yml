@@ -13,8 +13,9 @@ nginx:
     # certificates
     #- ./nginx/ca/server.crt/:/etc/nginx/server.crt:ro
     #- ./nginx/ca/server.key/:/etc/nginx/server.key:ro
-  links:
-    - fpm:__DOCKER_PHP_FPM__
+  #links:
+  #  - fpm:__DOCKER_PHP_FPM__
+  net: "host"
 
 # php-fpm
 fpm:
@@ -32,8 +33,9 @@ fpm:
     # - DB_DATABASE=
     # - DB_USERNAME=
     # - DB_PASSWORD=
-  links:
-    - mysql:mysql
+  #links:
+  #  - mysql:mysql
+  net: "host"
 
 # database
 mysql:
@@ -46,3 +48,4 @@ mysql:
     - ./mysql:/var/lib/mysql
   environment:
     - MYSQL_ROOT_PASSWORD=111111
+  net: "host"
