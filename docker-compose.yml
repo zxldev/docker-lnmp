@@ -16,6 +16,8 @@ nginx:
   #links:
   #  - fpm:__DOCKER_PHP_FPM__
   net: "host"
+  # restart policy
+  restart : always
 
 # php-fpm
 fpm:
@@ -36,6 +38,8 @@ fpm:
   #links:
   #  - mysql:mysql
   net: "host"
+  # restart policy
+  restart : always
 
 # database
 mysql:
@@ -49,3 +53,5 @@ mysql:
   environment:
     - MYSQL_ROOT_PASSWORD=111111
   net: "host"
+  # restart policy
+  restart : always
