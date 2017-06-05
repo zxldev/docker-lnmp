@@ -6,7 +6,7 @@ nginx:
    # - "443:443"
   volumes:
     # app
-    - /alidata/workspace/:/usr/share/nginx/html/
+    - /alidata/workspace/:/www/
     # nginx configs
     - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     - ./nginx/conf.d/:/etc/nginx/conf.d/:ro
@@ -25,7 +25,7 @@ fpm:
   ports:
     - "9000"
   volumes:
-    - /alidata/workspace/:/usr/share/nginx/html/
+    - /alidata/workspace/:/www/
     # Your php.ini
     - ./php-fpm/php.ini-production:/usr/local/etc/php/php.ini:ro
   # environment:
