@@ -15,10 +15,10 @@ RUN apt-get update && apt-get install -y \
         libmcrypt-dev \
         libpng12-dev \
         git \
-        uzip \
+        unzip \
     && docker-php-ext-install -j$(nproc) iconv mcrypt \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd pdo_mysql \
+    && docker-php-ext-install -j$(nproc) gd pdo_mysql bcmath \
     && pecl install xdebug redis \
     && docker-php-ext-enable xdebug redis \
     && echo "xdebug.remote_enable=on\n" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y \
     && echo "xdebug.idekey=\"PHPSTROM\"\n" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.remote_host = \"127.0.0.1\"\n" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && rm -rf /tmp/*
+    && rm -rf /tmp/* \
     && composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
 ENV PHALCON_VERSION=3.1.2

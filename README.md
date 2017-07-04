@@ -30,6 +30,11 @@ For more operations to containers, please refer to:
 
 Check out your https://\<docker-host\> and have fun :beer:
 
+### tips 
+
+* build with vpn may case connection problems
+
+
 ### License
 
 MIT
